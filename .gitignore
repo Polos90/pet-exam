@@ -1,0 +1,17 @@
+# Gradle
+.gradle/
+build/
+caches/
+daemon/
+native/
+jdks/
+.tmp/
+wrapper/
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Logs
+*.log
