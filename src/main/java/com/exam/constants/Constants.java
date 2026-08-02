@@ -45,16 +45,12 @@ public final class Constants {
     public static final String LOG_CLIENT_GET_RESP  = "[PetStoreClient] Response GET: {}";
     public static final String LOG_CLIENT_POST      = "[PetStoreClient] POST {} | Body: {}";
     public static final String LOG_CLIENT_POST_RESP = "[PetStoreClient] Response POST: {}";
-    public static final String LOG_CLIENT_PUT       = "[PetStoreClient] PUT {} | Body: {}";
-    public static final String LOG_CLIENT_PUT_DONE  = "[PetStoreClient] Pet actualizado, obteniendo datos actualizados...";
-    public static final String LOG_CLIENT_DELETE    = "[PetStoreClient] DELETE {}";
-    public static final String LOG_CLIENT_DELETE_OK = "[PetStoreClient] Pet eliminado correctamente";
+
 
     // ── Log messages — PetController ────────────────────────────────────────────
     public static final String LOG_CTRL_GET    = "[PetController] GET /api/pet/{}";
     public static final String LOG_CTRL_POST   = "[PetController] POST /api/pet | Body: {}";
-    public static final String LOG_CTRL_PUT    = "[PetController] PUT /api/pet/{} | Body: {}";
-    public static final String LOG_CTRL_DELETE = "[PetController] DELETE /api/pet/{}";
+    public static final String MSG_TIPO_DATO_INVALIDO = "Tipo de dato invalido para el parametro: ";
 
     // ── Log messages — ApiKeyFilter ─────────────────────────────────────────────
     public static final String LOG_FILTER_DENIED = "[ApiKeyFilter] Acceso denegado — X-API-KEY invalido o ausente";
@@ -71,9 +67,6 @@ public final class Constants {
     public static final String LOG_SVC_TRANSACTION  = "  TransactionId : {}";
     public static final String LOG_SVC_DATE_CREATED = "  DateCreated   : {}";
     public static final String LOG_SVC_FIELD_NAME   = "  Name          : {}";
-    public static final String LOG_SVC_UPDATING     = "[PetService] Actualizando pet ID: {}";
-    public static final String LOG_SVC_UPDATED      = "[PetService] Pet actualizado:";
-    public static final String LOG_SVC_DELETING     = "[PetService] Eliminando pet ID: {}";
-    public static final String LOG_SVC_DELETED      = "[PetService] Pet eliminado correctamente";
+    public static final String LOG_SVC_CACHE_HIT = "[PetService] Cache hit — retornando pet ID: {} sin llamar al cliente externo";
 
 }

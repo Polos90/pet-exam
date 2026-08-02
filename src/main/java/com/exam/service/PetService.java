@@ -42,7 +42,15 @@ public class PetService {
         log.info(Constants.LOG_SEPARATOR);
         log.info(Constants.LOG_SVC_SEARCH, petId);
 
+        if (cache.containsKey(petId)) {
+            log.info(Constants.LOG_SVC_CACHE_HIT, petId);
+            PetResponse cached = cache.get(petId);
+            log.info(Constants.LOG_SEPARATOR);
+            return cached;
+        }
         PetResponse pet = petStoreClient.getPetById(petId);
+
+        cache.put(petId, pet);
 
         // Pintar información en consola (punto 6 de la prueba)
         log.info(Constants.LOG_SVC_FOUND);
