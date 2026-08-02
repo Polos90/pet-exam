@@ -27,17 +27,12 @@ public class PetService {
 
     private final PetStoreClient petStoreClient;
 
-    // Cache en memoria — almacena pets ya consultados
     private final Map<Long, PetResponse> cache = new HashMap<>();
 
     public PetService(PetStoreClient petStoreClient) {
         this.petStoreClient = petStoreClient;
     }
 
-    /**
-     * Obtiene un pet por ID consumiendo la API externa
-     * Pinta la información en consola antes de regresar el response
-     */
     public PetResponse getPetById(Long petId) {
         log.info(Constants.LOG_SEPARATOR);
         log.info(Constants.LOG_SVC_SEARCH, petId);
@@ -52,7 +47,6 @@ public class PetService {
 
         cache.put(petId, pet);
 
-        // Pintar información en consola (punto 6 de la prueba)
         log.info(Constants.LOG_SVC_FOUND);
         log.info(Constants.LOG_SVC_FIELD_ID, pet.getId());
         log.info(Constants.LOG_SVC_FIELD_NOMBRE, pet.getName());
@@ -62,24 +56,16 @@ public class PetService {
         return pet;
     }
 
-    /**
-     * POST — Agrega un nuevo pet
-     * Genera transactionId (UUIDv4) y dateCreated (fecha actual)
-     */
     public AddPetResponse addPet(PetRequest request) {
         log.info(Constants.LOG_SEPARATOR);
         log.info(Constants.LOG_SVC_ADDING, request);
 
-        // Consumir API externa
         Map externalResponse = petStoreClient.addPet(request);
 
-        // Generar transactionId con UUIDv4 (punto 10b)
         String transactionId = UUID.randomUUID().toString();
 
-        // Generar dateCreated con fecha actual del sistema (punto 10c)
         String dateCreated = LocalDateTime.now().toString();
 
-        // Construir response
         AddPetResponse response = new AddPetResponse(
                 transactionId,
                 dateCreated,
@@ -87,11 +73,9 @@ public class PetService {
                 String.valueOf(externalResponse.get(Constants.FIELD_NAME))
         );
 
-        // Guardar en cache
         PetResponse petCache = new PetResponse(request.getId(), request.getName(), request.getStatus());
         cache.put(request.getId(), petCache);
 
-        // Pintar información en consola antes de retornar (punto 10a)
         log.info(Constants.LOG_SVC_ADDED);
         log.info(Constants.LOG_SVC_TRANSACTION, response.getTransactionId());
         log.info(Constants.LOG_SVC_DATE_CREATED, response.getDateCreated());

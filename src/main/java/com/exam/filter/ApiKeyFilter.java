@@ -33,7 +33,6 @@ public class ApiKeyFilter implements Filter {
 
         String keyHeader = request.getHeader(Constants.HEADER_API_KEY);
 
-        // Si no trae el header o el key no coincide -> 401
         if (keyHeader == null || !apiKey.equals(keyHeader)) {
             log.warn(Constants.LOG_FILTER_DENIED);
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

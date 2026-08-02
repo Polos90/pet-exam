@@ -14,7 +14,6 @@ import java.util.Map;
 /**
  * Cliente para consumir la API externa de PetStore:
  * https://petstore.swagger.io/v2
- *
  * Clases para conectarse a APIs de terceros
  */
 @Component

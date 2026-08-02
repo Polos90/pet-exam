@@ -20,7 +20,6 @@ public final class Constants {
     public static final String FIELD_TRANSACTION_ID = "transactionId";
     public static final String FIELD_DATE_CREATED   = "dateCreated";
     public static final String FIELD_ERROR          = "error";
-    public static final String FIELD_MENSAJE        = "mensaje";
 
     // ── Validation messages ─────────────────────────────────────────────────────
     public static final String MSG_ID_REQUIRED   = "El ID es requerido";

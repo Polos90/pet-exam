@@ -16,11 +16,8 @@ import java.util.Map;
 
 /**
  * Controlador REST — define los endpoints de la API
- *
  * GET    /api/pet/{petId}  → obtiene pet por ID
  * POST   /api/pet           → agrega nuevo pet
- * PUT    /api/pet/{petId}  → actualiza pet existente
- * DELETE /api/pet/{petId}  → elimina pet
  */
 @RestController
 @RequestMapping(Constants.API_PET_PATH)
@@ -34,11 +31,6 @@ public class PetController {
         this.petService = petService;
     }
 
-    /**
-     * GET /api/pet/{petId}
-     * Parametros de Entrada : idPet — Path Parameter
-     * Parametros de Salida  : id, name, status
-     */
     @GetMapping("/{petId}")
     public ResponseEntity<PetResponse> getPet(@PathVariable Long petId) {
         log.info(Constants.LOG_CTRL_GET, petId);
@@ -46,11 +38,6 @@ public class PetController {
         return ResponseEntity.ok(response);
     }
 
-    /**
-     * POST /api/pet
-     * Parametros de Entrada : id, status, name
-     * Parametros de Salida  : transactionId, dateCreated, status, name
-     */
     @PostMapping
     public ResponseEntity<AddPetResponse> addPet(@RequestBody @Valid PetRequest request) {
         log.info(Constants.LOG_CTRL_POST, request);
