@@ -7,11 +7,13 @@ import com.exam.model.response.AddPetResponse;
 import com.exam.model.response.PetResponse;
 import com.exam.service.PetService;
 import jakarta.validation.Valid;
+import lombok.Synchronized;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -43,5 +45,22 @@ public class PetController {
         log.info(Constants.LOG_CTRL_POST, request);
         AddPetResponse response = petService.addPet(request);
         return ResponseEntity.ok(response);
+    }
+
+    //POST /api/pets/bulk
+   // @Synchronized
+    @PostMapping("/api/pets/bulk")
+    public ResponseEntity<PetResponse> getPets(@PathVariable Long petId) {
+        log.info(Constants.LOG_CTRL_GET, petId);
+        PetResponse existe = petService.getPetById(petId);
+        ArrayList<Object> listas = new ArrayList<>();
+        listas.add(existe);
+
+        if(existe != null){
+            for (Object elemento : listas) {
+                log.info(elemento.toString());
+        }
+        }
+        return ResponseEntity.ok(existe);
     }
 }

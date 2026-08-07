@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+
 import java.util.Map;
 
 /**
@@ -26,7 +27,8 @@ public class PetStoreClient {
 
     private final RestTemplate restTemplate;
 
-    public PetStoreClient(RestTemplate restTemplate) {
+
+    public PetStoreClient(RestTemplate restTemplate ) {
         this.restTemplate = restTemplate;
     }
 
@@ -62,4 +64,5 @@ public class PetStoreClient {
 
         return response;
     }
+
 }
