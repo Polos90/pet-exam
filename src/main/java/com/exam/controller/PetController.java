@@ -46,21 +46,4 @@ public class PetController {
         AddPetResponse response = petService.addPet(request);
         return ResponseEntity.ok(response);
     }
-
-    //POST /api/pets/bulk
-   // @Synchronized
-    @PostMapping("/api/pets/bulk")
-    public ResponseEntity<PetResponse> getPets(@PathVariable Long petId) {
-        log.info(Constants.LOG_CTRL_GET, petId);
-        PetResponse existe = petService.getPetById(petId);
-        ArrayList<Object> listas = new ArrayList<>();
-        listas.add(existe);
-
-        if(existe != null){
-            for (Object elemento : listas) {
-                log.info(elemento.toString());
-        }
-        }
-        return ResponseEntity.ok(existe);
-    }
 }
